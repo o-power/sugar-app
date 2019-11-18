@@ -1,13 +1,13 @@
 <h1 id="title">Sugar App</h1>
 
-[Introduction](#introduction)
-[Demo](#demo)
-[UX](#ux)
-[Technologies/Libraries](#technologies)
-[Features](#features)
-[Testing](#testing)
-[Deployment](#deployment)
-[Credits](#credits)
+1. [Introduction](#introduction)
+2. [Demo](#demo)
+3. [UX](#ux)
+4. [Technologies/Libraries](#technologies)
+5. [Features](#features)
+6. [Testing](#testing)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
 
 <h2 id="introduction">Introduction</h2>
 
