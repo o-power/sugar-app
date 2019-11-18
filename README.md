@@ -19,6 +19,11 @@ This project is a MongoDB-backed Flask app for sharing the sugar content of food
 
 ### Wireframes
 ### User Stories
+1. As a user, I want to be able to add the sugar content of foods and drinks so that I can share them with the community.
+2. As a user, I want to be able to compare the sugar content of foods and drinks so that I can choose options with a lower sugar content.
+3. As a user, I want to be able to complete a survey so that I can test my knowledge on the sugar content of foods and drinks.
+4. As a user, I want to be able to see the aggregated survey results of everyone who has taken the survey so that I can see how much the community knows about the sugar content of foods and drinks.
+5. As a user, I want to be able to see statistics on the database so that I can see how complete a resource the site is.
 
 <h2 id="technologies">Technologies/Libraries</h2>
 
