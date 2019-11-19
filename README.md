@@ -54,6 +54,8 @@ Update: Edit sugar content of a food or drink.
 Delete: sugar content of a food or drink.
 Survey
 Display survey results
+Sorting
+Filtering
 
 ### Existing
 ### Future
