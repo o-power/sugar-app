@@ -2,7 +2,9 @@
 <html lang="en">
     <head>
         <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->     
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" type="text/css">    
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">   
     </head>
     <body>
@@ -13,9 +15,11 @@
 
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>-->
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
         <script>
-        $(document).ready(function(){
-            
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
         });
         </script>
     </body>

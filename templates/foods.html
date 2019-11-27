@@ -1,8 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row">
+    <ul class="collapsible">
         {% for food in foods %}
-            {{ food.food_group }}
+        <li>
+            <div class="collapsible-header">
+                <div class="col s3">
+                    <i class="material-icons">expand_more</i>
+                    <!--<a href="#" class="waves-effect waves-light btn btn_small">Done</a>
+                    <a href="#" class="waves-effect waves-light btn btn_small blue">Edit</a>-->
+                </div>
+                <div class="col s9">
+                    <strong>{{ food.food_name }}</strong> - {{ food.food_group }}
+                </div>
+            </div>
+            <div class="collapsible-body">
+                <span>
+                    {{ food.sugar_g_per_100g }}
+                    {{ food.sugar_g_per_serving }}
+                    {{ food.serving_description }}
+                    {{ food.reviewed }}
+                </span>
+            </div>
+        </li>
         {% endfor %}
+    </ul>
+</div>
+
+<div class="row">
+    <a href="{{ url_for('add_task') }}" class="btn waves-effect waves-light"><i class="material-icons right">playlist_add</i>Add Task</a>
 </div>
 {% endblock %}

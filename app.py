@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 app = Flask(__name__,
             template_folder='templates')
 app.config['MONGO_DBNAME'] = 'sugar_app'
-app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost')
+app.config['MONGO_URI'] = os.getenv('MONGO_URI')
 
 mongo = PyMongo(app)
 
@@ -16,7 +16,7 @@ def home():
 
 @app.route('/get_foods')
 def get_foods():
-    return render_template('foods.html', foods=mongo.db.food_group.find())
+    return render_template('foods.html', foods=mongo.db.foods.find())
 
 # @app.route('/get_drinks')
 # def get_drink():
@@ -24,7 +24,7 @@ def get_foods():
 
 @app.route('/add_food')
 def add_food():
-    return render_template('addfood.html', categories=mongo.db.food_group.find())
+    return render_template('addfood.html')
 
 # @app.route('/add_drink')
 # def add_drink():
