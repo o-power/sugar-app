@@ -30,6 +30,15 @@ def add_food():
 # def add_drink():
 #     return render_template('adddrink.html', categories=mongo.db.drink_categories.find())
 
+@app.route('/insert_food', methods=['POST'])
+def insert_food():
+    foods = mongo.db.foods
+    food = request.form.to_dict()
+    food.pop('action')
+    food['reviewed'] = False
+    foods.insert_one(food)
+    return redirect(url_for('get_foods'))
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),

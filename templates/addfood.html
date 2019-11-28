@@ -1,3 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+    <form action="{{ url_for('insert_food') }}" method="POST" class="col s12">
+        <!-- Food Name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <input id="food_name" name="food_name" type="text" class="validate">
+                <label for="food_name">Food Name</label>
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">poll</i>
+                <select id="category_name" name="category_name">
+                    <option value="" disabled selected>Choose category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+                <label>Task Category</label>
+            </div>
+        </div>-->
+
+        <!-- Submit Button -->
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Add Food
+                <i class="material-icons right">fastfood</i>
+            </button>
+        </div>
+    </form>
+</div>
 {% endblock %}
