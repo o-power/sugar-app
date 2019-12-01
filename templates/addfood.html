@@ -11,18 +11,46 @@
             </div>
         </div>
 
-        <!--<div class="row">
+        <!-- Food Group -->
+        <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
-                <select id="category_name" name="category_name">
-                    <option value="" disabled selected>Choose category</option>
-                    {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                <select id="food_group" name="food_group">
+                    <option value="" disabled selected>Choose Food Group</option>
+                    {% for food_group in food_groups %}
+                    <option value="{{ food_group.food_group }}">{{ food_group.food_group }}</option>
                     {% endfor %}
                 </select>
-                <label>Task Category</label>
+                <label>Food Group</label>
             </div>
-        </div>-->
+        </div>
+
+        <!-- Sugar g per 100g -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <input id="sugar_g_per_100g" name="sugar_g_per_100g" type="number" min="0" max="100" step="0.01" class="validate">
+                <label for="sugar_g_per_100g">Sugar g per 100g</label>
+            </div>
+        </div>   
+        
+        <!-- Sugar g per Serving -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <input id="sugar_g_per_serving" name="sugar_g_per_serving" type="number" min="0" max="100" step="0.01" class="validate">
+                <label for="sugar_g_per_serving">Sugar g per Serving</label>
+            </div>
+        </div>
+
+        <!-- Serving Description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="material-icons prefix">assignment</i>
+                <input id="serving_description" name="serving_description" type="text" class="validate">
+                <label for="serving_description">Serving Description</label>
+            </div>
+        </div>
 
         <!-- Submit Button -->
         <div class="row">

@@ -24,7 +24,8 @@ def get_foods():
 
 @app.route('/add_food')
 def add_food():
-    return render_template('addfood.html')
+    food_groups = mongo.db.food_group.find()
+    return render_template('addfood.html', food_groups=food_groups)
 
 # @app.route('/add_drink')
 # def add_drink():
@@ -32,11 +33,13 @@ def add_food():
 
 @app.route('/insert_food', methods=['POST'])
 def insert_food():
-    foods = mongo.db.foods
+    foods_collection = mongo.db.foods
     food = request.form.to_dict()
     food.pop('action')
+    food['sugar_g_per_100g'] = float(food['sugar_g_per_100g'])
+    food['sugar_g_per_serving'] = float(food['sugar_g_per_serving'])
     food['reviewed'] = False
-    foods.insert_one(food)
+    foods_collection.insert_one(food)
     return redirect(url_for('get_foods'))
 
 if __name__ == '__main__':
