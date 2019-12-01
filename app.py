@@ -42,6 +42,16 @@ def insert_food():
     foods_collection.insert_one(food)
     return redirect(url_for('get_foods'))
 
+@app.route('/edit_food/<food_id>')
+def edit_food(food_id):
+    food = mongo.db.foods.find_one({'_id': ObjectId(food_id)})
+    food_groups = mongo.db.food_group.find()
+    return render_template('editfood.html', food=food, food_groups=food_groups)
+
+@app.route('/update_food/<food_id>', methods=['POST'])
+def update_food(food_id):
+    return "<h1>Update Food</h1>"
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),
