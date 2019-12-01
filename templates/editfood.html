@@ -56,6 +56,21 @@
             </div>
         </div>
 
+        <!-- Reviewed -->
+        <div class="row">
+            <div class="switch">
+                <label>
+                    {% if food.reviewed %}
+                    <input id="reviewed" name="reviewed" type="checkbox" checked>
+                    {% else %}
+                    <input id="reviewed" name="reviewed" type="checkbox">
+                    {% endif %}
+                    <span class="lever"></span>
+                    Reviewed
+                </label>
+            </div>
+        </div>
+
         <!-- Submit Button -->
         <div class="row">
             <button class="btn waves-effect waves-light" type="submit" name="action">Edit Food
