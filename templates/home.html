@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for food in foods %}
+    <div class="divider"></div>
+    <div class="section">
+        <h5>{{ food.food_name }}</h5>
+        <p>{{ food.sugar_g_per_100g }}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
