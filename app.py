@@ -50,7 +50,19 @@ def edit_food(food_id):
 
 @app.route('/update_food/<food_id>', methods=['POST'])
 def update_food(food_id):
-    return "<h1>Update Food</h1>"
+    foods_collection = mongo.db.foods
+    foods_collection.update_one({'_id': ObjectId(food_id)},
+                     {'$set':
+                      {
+                          'food_name': request.form.get('food_name'),
+                          'food_group': request.form.get('food_group'),
+                          'sugar_g_per_100g': request.form.get('sugar_g_per_100g'),
+                          'sugar_g_per_serving': request.form.get('sugar_g_per_serving'),
+                          'serving_description': request.form.get('serving_description'),
+                          'reviewed': (request.form.get('reviewed') == "on"),
+                      }
+                      })
+    return redirect(url_for('get_foods'))
 
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
