@@ -68,6 +68,22 @@ def update_food(food_id):
 def get_dbstats():
     return "<h1>DB Stats</h1>"
 
+@app.route('/sort/<int:sort_id>')
+def sort(sort_id):
+    html = ""
+    if sort_id == 1:
+        html = "<h1>Sort id is Sugar: High to Low</h1>"
+    elif sort_id == 2:
+        html = "<h1>Sort id is Sugar: Low to High</h1>"
+    elif sort_id == 3:
+        html = "<h1>Sort id is A - Z</h1>"
+    elif sort_id == 4:
+        html = "<h1>Sort id is Z - A</h1>"
+    else:
+        html = "<h1>Error</h1>"
+
+    return html
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),

@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>
+    
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+            <li><a href="{{ url_for('sort', sort_id = 1) }}">Sugar: High to Low</a></li>
+            <li><a href="{{ url_for('sort', sort_id = 2) }}">Sugar: Low to High</a></li>
+            <li><a href="{{ url_for('sort', sort_id = 3) }}">A - Z</a></li>
+            <li><a href="{{ url_for('sort', sort_id = 4) }}">Z - A</a></li>
+        </ul>
+    </div>
     {% for food in foods %}
     <div class="divider"></div>
     <div class="section">
