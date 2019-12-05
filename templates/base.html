@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}" type="text/css">    
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">   
     </head>
     <body>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{{ url_for('home') }}" class="brand-logo">Logo</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">Javascript</a></li>
+                    <li><a href="mobile.html">Mobile</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <ul class="sidenav" id="mobile-demo">
+            <li><a class="sidenav-close" href="#!"><i class="material-icons" id="sidenav-close-icon">close</i></a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+
         <div class="container">
             {% block content %}
             {% endblock %}
@@ -19,6 +42,7 @@
         <script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
         <script>
         $(document).ready(function () {
+            $('.sidenav').sidenav();
             $('.collapsible').collapsible();
             $('select').formSelect();
         });
