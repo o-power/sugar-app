@@ -1,3 +1,20 @@
 #sidenav-close-icon {
     margin: 0px;
 }
+
+.outer-div {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+}
+
+.inner-div {
+    text-align: right; /* Right-align text */
+    padding-top: 10px; /* Add top padding */
+    padding-bottom: 10px; /* Add bottom padding */
+    color: white; /* White text color */
+    background-color: #4CAF50;
+}
+
+.inner-div:hover {
+    background-color: #2196F3;
+}

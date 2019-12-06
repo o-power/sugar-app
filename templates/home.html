@@ -12,6 +12,18 @@
             <li><a href="{{ url_for('sort', sort_id = 4) }}">Z - A</a></li>
         </ul>-->
         <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
+            <!-- Food, Drink -->
+            <div class="input-field col s12">
+                <i class="material-icons prefix">poll</i>
+                <select id="category" name="category">
+                    <option value="A1" selected>All</option>
+                    <option value="B1">Food</option>
+                    <!-- must have g for FOods and ml for Drinks -->
+                    <option value="C1">Drink</option>
+                </select>
+                <label>Category</label>
+            </div>
+
             <!-- Sugar Measure -->
             <div class="input-field col s12">
                 <i class="material-icons prefix">poll</i>
@@ -51,6 +63,9 @@
     <div class="section">
         <h5>{{ food.food_name }}</h5>
         <p>{{ food.sugar_g_per_100g }}</p>
+        <div class="outer-div">
+            <div class="inner-div" style="width:90%;">65%</div>
+        </div>
     </div>
     {% endfor %}
 {% endblock %}
