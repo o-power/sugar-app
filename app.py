@@ -84,6 +84,12 @@ def sort(sort_id):
 
     return html
 
+@app.route('/apply_filters', methods=['POST'])
+def apply_filters():
+    html1 =request.form.get('sugar-measure')
+    html2 =request.form.get('sort-by')
+    return "<h1>Sugar Per {0}, Sort by {1}</h1>".format(html1, html2)
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),
