@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
-     <div class="row">
+<div class="section home-image">
+</div>
+
+<div class="container">
+    <div class="row">
         <!-- Dropdown Trigger -->
         <!--<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>-->
-    
+
         <!-- Dropdown Structure -->
         <!--<ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{{ url_for('sort', sort_id = 1) }}">Sugar: High to Low</a></li>
-            <li><a href="{{ url_for('sort', sort_id = 2) }}">Sugar: Low to High</a></li>
-            <li><a href="{{ url_for('sort', sort_id = 3) }}">A - Z</a></li>
-            <li><a href="{{ url_for('sort', sort_id = 4) }}">Z - A</a></li>
-        </ul>-->
+                <li><a href="{{ url_for('sort', sort_id = 1) }}">Sugar: High to Low</a></li>
+                <li><a href="{{ url_for('sort', sort_id = 2) }}">Sugar: Low to High</a></li>
+                <li><a href="{{ url_for('sort', sort_id = 3) }}">A - Z</a></li>
+                <li><a href="{{ url_for('sort', sort_id = 4) }}">Z - A</a></li>
+            </ul>-->
         <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
             <!-- Food, Drink -->
             <div class="input-field col s12">
@@ -70,4 +74,6 @@
         </div>
     </div>
     {% endfor %}
+
+</div>
 {% endblock %}

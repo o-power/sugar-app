@@ -38,4 +38,17 @@ nav {
     color: #FFF;
 }
 
+.page-footer {
+    background-color: #03B1CC;
+}
 /* blue	#03B1CC */
+
+.home-image {
+    height: 75vh;
+
+    background: url('../img/sprinkles.jpg') no-repeat bottom left fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
