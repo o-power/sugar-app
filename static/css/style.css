@@ -52,3 +52,14 @@ nav {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.card {
+    background: rgb(255, 255, 255);
+    background: rgba(101, 45, 146,0.8);
+    margin: 1rem;
+}
+
+.card-content {
+    color: #FFF;
+    font-weight: bold;
+}
