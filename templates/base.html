@@ -14,7 +14,14 @@
             <nav>
                 <div class="container">
                     <div class="nav-wrapper">
-                        <a href="{{ url_for('home') }}" class="brand-logo">The Sugar Catalog</a>
+                        <!-- Logo and title in navbar -->
+                        <a href="{{ url_for('home') }}" class="brand-logo hide-on-large-only">
+                            <img class="brand-image" src="{{ url_for('static', filename='img/thesugarcataloglogo.png') }}">
+                        </a>
+                        <a href="{{ url_for('home') }}" class="brand-logo hide-on-med-and-down">
+                            <img class="brand-image" src="{{ url_for('static', filename='img/logo.png') }}">
+                            The Sugar Catalog
+                        </a>
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
                             <li><a href="sass.html">Sass</a></li>
