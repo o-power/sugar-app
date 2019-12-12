@@ -54,14 +54,28 @@ nav {
 }
 
 .card {
-    background: rgb(255, 255, 255);
-    background: rgba(101, 45, 146,0.8);
+    background: rgb(101, 45, 146);
+    background: rgba(101, 45, 146,0.85);
     margin: 1rem;
 }
 
 .card-content {
     color: #FFF;
+    /*font-weight: bold;*/
+}
+
+.card-action {
+    text-align: center;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+    color: #FFF;
     font-weight: bold;
+    margin: 0px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
+    color: #fffc68;
 }
 
 .brand-logo {
