@@ -50,6 +50,8 @@ Sugar in drinks (g/100ml or g per serving/portion, % sugar based on density of w
 
 1. [MongoDB](https://www.mongodb.com/)
 2. [Heroku](https://www.heroku.com/)
+3. Microsoft PowerPoint was used to create the logo.
+4. [Gimp](https://www.gimp.org/) was used to reduce the file size of the background photo and thereby speed up how fast it loads.
 
 [Materialize]() or [Bootstrap]()
 [Python]()
@@ -103,3 +105,4 @@ git push -u heroku master
 ### Content
 ### Media
 ### Acknowledgements
+* Shortcut icon generated using [Favicon Generator](https://realfavicongenerator.net/) [accessed 12th December 2019].
