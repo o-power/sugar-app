@@ -1,60 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="section home-image valign-wrapper">
-
     <div class="container">
-
         <div class="row">
-
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-content">
-                        <p>
-                            <!--A healthy diet means limiting our intake of added sugar.
-                            Men should have no more than 9 teaspoons and women no more than 6 teaspoons of added sugar
-                            per day.-->
-                            The Sugar Catalog is your quick reference to identify high sugar foods and their low sugar
-                            alternatives.
-                        </p>
+            <div class="col s12">
+                <div class="card-panel">
+                    <p>
+                        A healthy diet means limiting our intake of added sugar.
+                    </p>
+                    <p>
+                        <strong>The Sugar Catalog</strong> is your reference to identify high sugar foods and their low sugar alternatives.
+                    </p>
+                    <p>
+                        If your favourite food or drink is missing from the catalog, please consider adding it.
+                    </p>
+                    <p>
+                        Want to test your knowledge of added sugar? Then take our survey!
+                    </p>
+                    <div class="row">
+                        <div class="col s12 m4 btn-container">
+                            <a class="waves-effect waves-light btn home-btn">Search Catalog</a>
+                        </div>
+                        <div class="col s12 m4 btn-container">
+                            <a class="waves-effect waves-light btn home-btn">Add to Catalog</a>
+                        </div>
+                        <div class="col s12 m4 btn-container">
+                            <a class="waves-effect waves-light btn home-btn">Take Survey</a>
+                        </div>
                     </div>
-                    <div class="card-action">
-                        <a href="#" class="home-card-action">Go to Catalog</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-content">
-                        <p>
-                            If your favourite food or drink is missing from the catalog, please consider adding it to
-                            our database.
-                        </p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="home-card-action">Add to Catalog</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="card">
-                    <div class="card-content">
-                        <p>
-                            Unsure about your knowledge of added sugar? Then take our survey!
-                        </p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="home-card-action">Go to Survey</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</div>
+                </div> <!-- card -->
+            </div> <!-- col -->
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div> <!-- section -->
 
 <div class="container">
     <div class="row">
@@ -112,7 +90,7 @@
                 </button>
             </div>
         </form>
-    </div>
+    </div> <!-- row -->
 
 
     {% for food in foods %}
@@ -128,5 +106,5 @@
     </div>
     {% endfor %}
 
-</div>
+</div> <!-- container -->
 {% endblock %}

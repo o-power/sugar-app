@@ -41,7 +41,6 @@ nav {
 .page-footer {
     background-color: #03B1CC;
 }
-/* blue	#03B1CC */
 
 .home-image {
     height: 75vh;
@@ -53,29 +52,37 @@ nav {
     background-size: cover;
 }
 
-.card {
+.card-panel {
     background: rgb(101, 45, 146);
-    background: rgba(101, 45, 146,0.85);
-    margin: 1rem;
+    background: rgba(101, 45, 146, 0.9);
+    margin: 0px;
+    padding: 1rem;
 }
 
-.card-content {
-    color: #FFF;
-    /*font-weight: bold;*/
-}
-
-.card-action {
+.btn-container {
     text-align: center;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-    color: #FFF;
-    font-weight: bold;
-    margin: 0px;
+.home-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    background-color: /*#03B1CC*/#E93996;;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
-    color: #fffc68;
+.home-btn:hover {
+    background-color: /*#17c5e0*/#fd4dab;
+}
+
+.card-panel .row {
+    margin-bottom: 0px;
+}
+
+.card-panel p {
+    color: #FFF;
+    text-align: justify;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
 }
 
 .brand-logo {
@@ -93,5 +100,14 @@ nav {
     }
     .brand-logo {
         height: 64px;
+    }
+    .home-btn {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .card-panel p {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        text-align: center;
     }
 }
