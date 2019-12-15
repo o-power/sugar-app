@@ -34,77 +34,71 @@
     </div> <!-- container -->
 </div> <!-- section -->
 
-<div class="container">
-    <div class="row">
-        <!-- Dropdown Trigger -->
-        <!--<a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Sort by</a>-->
+<div class="section">
+    <div class="container">
+        <div class="row center">
+            <h5>Search Catalog</h5>
+        </div>
+        <div class="row">
+            <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
+                <!-- Food, Drink -->
+                <div class="input-field col s12 l4">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="category" name="category">
+                        <option value="A1" selected>All</option>
+                        <option value="B1">Food</option>
+                        <!-- must have g for Foods and ml for Drinks -->
+                        <option value="C1">Drink</option>
+                    </select>
+                    <label>Category</label>
+                </div>
 
-        <!-- Dropdown Structure -->
-        <!--<ul id='dropdown1' class='dropdown-content'>
-                <li><a href="{{ url_for('sort', sort_id = 1) }}">Sugar: High to Low</a></li>
-                <li><a href="{{ url_for('sort', sort_id = 2) }}">Sugar: Low to High</a></li>
-                <li><a href="{{ url_for('sort', sort_id = 3) }}">A - Z</a></li>
-                <li><a href="{{ url_for('sort', sort_id = 4) }}">Z - A</a></li>
-            </ul>-->
-        <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
-            <!-- Food, Drink -->
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <select id="category" name="category">
-                    <option value="A1" selected>All</option>
-                    <option value="B1">Food</option>
-                    <!-- must have g for FOods and ml for Drinks -->
-                    <option value="C1">Drink</option>
-                </select>
-                <label>Category</label>
-            </div>
+                <!-- Sugar Measure -->
+                <div class="input-field col s12 l4">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="sugar-measure" name="sugar-measure">
+                        <option value="A" selected>Sugar per Serving</option>
+                        <option value="B">Sugar per 100g</option>
+                        <!-- must have g for Foods and ml for Drinks -->
+                        <option value="C">Sugar per 100ml</option>
+                    </select>
+                    <label>Sugar Measure</label>
+                </div>
 
-            <!-- Sugar Measure -->
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <select id="sugar-measure" name="sugar-measure">
-                    <option value="A" selected>Serving</option>
-                    <option value="B">100g</option>
-                    <!-- must have g for FOods and ml for Drinks -->
-                    <option value="C">100ml</option>
-                </select>
-                <label>Sugar per</label>
-            </div>
+                <!-- Sort -->
+                <div class="input-field col s12 l4">
+                    <i class="material-icons prefix">poll</i>
+                    <select id="sort-by" name="sort-by">
+                        <option value="1" selected>Sugar: High to Low</option>
+                        <option value="2">Sugar: Low to High</option>
+                        <option value="3">A - Z</option>
+                        <option value="4">Z - A</option>
+                    </select>
+                    <label>Sort By</label>
+                </div>
 
-            <!-- Sort -->
-            <div class="input-field col s12">
-                <i class="material-icons prefix">poll</i>
-                <select id="sort-by" name="sort-by">
-                    <option value="1" selected>Sugar: High to Low</option>
-                    <option value="2">Sugar: Low to High</option>
-                    <option value="3">A - Z</option>
-                    <option value="4">Z - A</option>
-                </select>
-                <label>Sort</label>
-            </div>
+                <!-- Apply Button -->
+                <div class="row center">
+                    <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">Apply
+                        <i class="material-icons right">fastfood</i>
+                    </button>
+                </div>
+            </form>
+        </div> <!-- row -->
 
-            <!-- Apply Button -->
-            <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Apply
-                    <i class="material-icons right">fastfood</i>
-                </button>
-            </div>
-        </form>
-    </div> <!-- row -->
-
-
-    {% for food in foods %}
-    <div class="divider"></div>
-    <div class="section">
-        <h5>{{ food.food_name }}</h5>
-        <p>{{ food.sugar_g_per_100g }}</p>
-        <div class="outer-div">
-            <div class="inner-div" style="width:90%;">
-                65%
+        <div class="divider"></div>
+        {% for food in foods %}
+        <div class="row">
+            <h5 class="bar-title">{{ food.food_name }}</h5><div class="traffic-light">4</div>
+            <p>{{ food.sugar_g_per_100g }}</p>
+            <div class="outer-div">
+                <div class="inner-div" style="width:90%;">
+                    65%
+                </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
 
-</div> <!-- container -->
+    </div> <!-- container -->
+</div> <!-- section -->
 {% endblock %}
