@@ -122,26 +122,18 @@ nav {
     font-size: 16px;
 }
 
-.bar-title {
+.traffic-light-label {
     display: inline-block;
-}
-
-.traffic-light {
-    display: inline-block;
-    font-weight: 300;
-    color: #fff;
-    background-color: #26a69a;
-    border-radius: 2px;
-    min-width: 3rem;
-    padding: 0 6px;
-    margin-left: 14px;
-    text-align: center;
     font-size: 1rem;
-    line-height: 22px;
-    height: 22px;
-    color: #757575;
+    background-color: #cc3232;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 1px;
+    border-radius: 2px;
+    color: #FFF;
+    text-align: center;
 }
 
 /* Footer */

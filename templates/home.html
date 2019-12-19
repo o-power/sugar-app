@@ -41,12 +41,14 @@
         </div>
         <div class="row">
             <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
+                
+                <!-- Need a wildcard search as well -->
+
                 <!-- Food, Drink -->
                 <div class="input-field col s12 l4">
                     <i class="material-icons prefix">poll</i>
                     <select id="category" name="category">
-                        <option value="A1" selected>All</option>
-                        <option value="B1">Food</option>
+                        <option value="B1" selected>Food</option>
                         <!-- must have g for Foods and ml for Drinks -->
                         <option value="C1">Drink</option>
                     </select>
@@ -89,11 +91,14 @@
         <div class="divider"></div>
         {% for food in foods %}
         <div class="row">
-            <h5 class="bar-title">{{ food.food_name }}</h5><div class="traffic-light">4</div>
-            <p>{{ food.sugar_g_per_100g }}</p>
+            <h5>
+                <div class="traffic-light-label">Medium</div> <!-- colour needs to be made dynamic -->
+                {{ food.food_name }}
+            </h5>
+            <p>{{ food.sugar_g_per_100g }}g sugar per 100g</p> <!-- has to be made dynamic -->
             <div class="outer-div">
-                <div class="inner-div" style="width:90%;">
-                    65%
+                <div class="inner-div" style="width:90%;"> <!-- % has to made dynamic -->
+                    {{ food.sugar_g_per_100g }}g <!-- has to be made dependent on sugar measure -->
                 </div>
             </div>
         </div>
