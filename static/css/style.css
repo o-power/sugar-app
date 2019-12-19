@@ -72,10 +72,6 @@ nav {
     margin-block-end: 0.5em;
 }
 
-.input-field > label {
-    color: #000;
-}
-
 .select-wrapper input.select-dropdown {
     border-bottom-color: #000;
 }
@@ -98,6 +94,47 @@ nav {
 
 .apply-btn:hover {
     background-color: #03a3ae;
+}
+
+.input-field label {
+    color: #000;
+}
+
+.input-field input[type=text]:not(.browser-default) + label,
+.input-field input[type=number]:not(.browser-default) + label {
+    color: #000;
+}
+
+.input-field input[type=text]:not(.browser-default):focus + label,
+.input-field input[type=number]:not(.browser-default):focus + label  {
+    color: #000;
+}
+
+.input-field input[type=text]:focus + label,
+.input-field input[type=number]:focus + label {
+    color: #000;
+}
+
+.input-field input[type=text]:not(.browser-default),
+.input-field input[type=number]:not(.browser-default) {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field input[type=text]:not(.browser-default):focus,
+.input-field input[type=number]:not(.browser-default):focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+.input-field .prefix.active {
+    color: #000;
 }
 
 .divider {
@@ -135,6 +172,8 @@ nav {
     color: #FFF;
     text-align: center;
 }
+
+/* amber #db7b2b, green #2dc937 */
 
 /* Footer */
 .page-footer {

@@ -41,44 +41,45 @@
         </div>
         <div class="row">
             <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
-                
+        
                 <!-- Need a wildcard search as well -->
-
-                <!-- Food, Drink -->
-                <div class="input-field col s12 l4">
-                    <i class="material-icons prefix">poll</i>
-                    <select id="category" name="category">
-                        <option value="B1" selected>Food</option>
-                        <!-- must have g for Foods and ml for Drinks -->
-                        <option value="C1">Drink</option>
-                    </select>
-                    <label>Category</label>
-                </div>
-
-                <!-- Sugar Measure -->
-                <div class="input-field col s12 l4">
-                    <i class="material-icons prefix">poll</i>
-                    <select id="sugar-measure" name="sugar-measure">
-                        <option value="A" selected>Sugar per Serving</option>
-                        <option value="B">Sugar per 100g</option>
-                        <!-- must have g for Foods and ml for Drinks -->
-                        <option value="C">Sugar per 100ml</option>
-                    </select>
-                    <label>Sugar Measure</label>
-                </div>
-
-                <!-- Sort -->
-                <div class="input-field col s12 l4">
-                    <i class="material-icons prefix">poll</i>
-                    <select id="sort-by" name="sort-by">
-                        <option value="1" selected>Sugar: High to Low</option>
-                        <option value="2">Sugar: Low to High</option>
-                        <option value="3">A - Z</option>
-                        <option value="4">Z - A</option>
-                    </select>
-                    <label>Sort By</label>
-                </div>
-
+                <div class="row">
+                    <!-- Food, Drink -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="category" name="category">
+                            <option value="B1" selected>Food</option>
+                            <!-- must have g for Foods and ml for Drinks -->
+                            <option value="C1">Drink</option>
+                        </select>
+                        <label>Category</label>
+                    </div>
+        
+                    <!-- Sugar Measure -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="sugar-measure" name="sugar-measure">
+                            <option value="A" selected>Sugar per Serving</option>
+                            <option value="B">Sugar per 100g</option>
+                            <!-- must have g for Foods and ml for Drinks -->
+                            <option value="C">Sugar per 100ml</option>
+                        </select>
+                        <label>Sugar Measure</label>
+                    </div>
+        
+                    <!-- Sort -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="sort-by" name="sort-by">
+                            <option value="1" selected>Sugar: High to Low</option>
+                            <option value="2">Sugar: Low to High</option>
+                            <option value="3">A - Z</option>
+                            <option value="4">Z - A</option>
+                        </select>
+                        <label>Sort By</label>
+                    </div>
+                </div> <!-- row -->
+        
                 <!-- Apply Button -->
                 <div class="row center">
                     <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">Apply
