@@ -96,6 +96,14 @@ nav {
     background-color: #03a3ae;
 }
 
+.switch label {
+    color: #000;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #037eae;
+}
+
 .input-field label {
     color: #000;
 }
