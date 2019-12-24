@@ -48,9 +48,9 @@
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
                         <select id="category" name="category">
-                            <option value="B1" selected>Food</option>
+                            <option value="food" selected>Food</option>
                             <!-- must have g for Foods and ml for Drinks -->
-                            <option value="C1">Drink</option>
+                            <option value="drink">Drink</option>
                         </select>
                         <label>Category</label>
                     </div>
@@ -59,10 +59,10 @@
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
                         <select id="sugar-measure" name="sugar-measure">
-                            <option value="A" selected>Sugar per Serving</option>
-                            <option value="B">Sugar per 100g</option>
+                            <option value="serving" selected>Sugar per Serving</option>
+                            <option value="100g">Sugar per 100g</option>
                             <!-- must have g for Foods and ml for Drinks -->
-                            <option value="C">Sugar per 100ml</option>
+                            <option value="100ml">Sugar per 100ml</option>
                         </select>
                         <label>Sugar Measure</label>
                     </div>
@@ -71,10 +71,10 @@
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
                         <select id="sort-by" name="sort-by">
-                            <option value="1" selected>Sugar: High to Low</option>
-                            <option value="2">Sugar: Low to High</option>
-                            <option value="3">A - Z</option>
-                            <option value="4">Z - A</option>
+                            <option value="H-L" selected>Sugar: High to Low</option>
+                            <option value="L-H">Sugar: Low to High</option>
+                            <option value="A-Z">A - Z</option>
+                            <option value="Z-A">Z - A</option>
                         </select>
                         <label>Sort By</label>
                     </div>
@@ -94,7 +94,7 @@
         <div class="row">
             <h5>
                 <div class="traffic-light-label">Medium</div> <!-- colour needs to be made dynamic -->
-                {{ food.food_name }}
+                {{ food.name }}
             </h5>
             <p>{{ food.sugar_g_per_100g }}g sugar per 100g</p> <!-- has to be made dynamic -->
             <div class="outer-div">

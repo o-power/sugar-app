@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 
 app = Flask(__name__,
@@ -54,8 +54,8 @@ def update_food(food_id):
     foods_collection.update_one({'_id': ObjectId(food_id)},
                      {'$set':
                       {
-                          'food_name': request.form.get('food_name'),
-                          'food_group': request.form.get('food_group'),
+                          'name': request.form.get('food_name'),
+                          'group': request.form.get('food_group'),
                           'sugar_g_per_100g': float(request.form.get('sugar_g_per_100g')),
                           'sugar_g_per_serving': float(request.form.get('sugar_g_per_serving')),
                           'serving_description': request.form.get('serving_description'),
@@ -86,9 +86,40 @@ def sort(sort_id):
 
 @app.route('/apply_filters', methods=['POST'])
 def apply_filters():
-    html0 =request.form.get('category')
-    html1 =request.form.get('sugar-measure')
-    html2 =request.form.get('sort-by')
+    category = request.form.get('category')
+    if category == 'food':
+        victuals = mongo.db.foods.find()
+    else:
+        victuals = mongo.db.drinks.find()
+    
+    sugar_measure = request.form.get('sugar-measure')
+    sort_by = request.form.get('sort-by')
+
+    if (sort_by == 'H-L') or (sort_by == 'L-H'):
+        if sugar_measure == 'serving':
+            if sort_by == 'H-L':
+                victuals_sorted = victuals.sort("sugar_g_per_serving", DESCENDING)
+            else:
+                victuals_sorted = victuals.sort("sugar_g_per_serving")
+        elif sugar_measure == '100g':
+            if sort_by == 'H-L':
+                victuals_sorted = victuals.sort("sugar_g_per_100g", DESCENDING)
+            else:
+                victuals_sorted = victuals.sort("sugar_g_per_100g")
+        elif sugar_measure == '100ml':
+            if sort_by == 'H-L':
+                victuals_sorted = victuals.sort("sugar_g_per_100ml", DESCENDING)
+            else:
+                victuals_sorted = victuals.sort("sugar_g_per_100ml")
+    elif sort_by == 'A-Z':
+        victuals_sorted = victuals.sort("name")
+    elif sort_by == 'Z-A':
+        victuals_sorted = victuals.sort("name", DESCENDING)
+    else:
+        victuals_sorted = victuals.sort("name")
+
+    # return the html get_foods ?
+    # send in victuals_sorted as foods, category, sort_by and sugar_measure (so as to set defaults fo filters)
     return "<h1>Category {0}, Sugar Per {1}, Sort by {2}</h1>".format(html0,html1, html2)
 
 if __name__ == '__main__':
