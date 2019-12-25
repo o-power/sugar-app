@@ -12,7 +12,9 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template('home.html', foods=mongo.db.foods.find())
+    food_groups = mongo.db.food_groups.find()
+    foods = mongo.db.foods.find()
+    return render_template('home.html', food_groups=food_groups, foods=foods)
 
 @app.route('/get_foods')
 def get_foods():
@@ -24,7 +26,7 @@ def get_foods():
 
 @app.route('/add_food')
 def add_food():
-    food_groups = mongo.db.food_group.find()
+    food_groups = mongo.db.food_groups.find()
     return render_template('addfood.html', food_groups=food_groups)
 
 # @app.route('/add_drink')
@@ -45,7 +47,7 @@ def insert_food():
 @app.route('/edit_food/<food_id>')
 def edit_food(food_id):
     food = mongo.db.foods.find_one({'_id': ObjectId(food_id)})
-    food_groups = mongo.db.food_group.find()
+    food_groups = mongo.db.food_groups.find()
     return render_template('editfood.html', food=food, food_groups=food_groups)
 
 @app.route('/update_food/<food_id>', methods=['POST'])
@@ -64,59 +66,53 @@ def update_food(food_id):
                       })
     return redirect(url_for('get_foods'))
 
-@app.route('/dbstats')
-def get_dbstats():
-    return "<h1>DB Stats</h1>"
+#@app.route('/dbstats')
+#def get_dbstats():
+#    return "<h1>DB Stats</h1>"
 
-@app.route('/sort/<int:sort_id>')
-def sort(sort_id):
-    html = ""
-    if sort_id == 1:
-        html = "<h1>Sort id is Sugar: High to Low</h1>"
-    elif sort_id == 2:
-        html = "<h1>Sort id is Sugar: Low to High</h1>"
-    elif sort_id == 3:
-        html = "<h1>Sort id is A - Z</h1>"
-    elif sort_id == 4:
-        html = "<h1>Sort id is Z - A</h1>"
+#@app.route('/sort/<int:sort_id>')
+#def sort(sort_id):
+#    html = ""
+#    if sort_id == 1:
+#        html = "<h1>Sort id is Sugar: High to Low</h1>"
+#    elif sort_id == 2:
+#        html = "<h1>Sort id is Sugar: Low to High</h1>"
+#    elif sort_id == 3:
+#        html = "<h1>Sort id is A - Z</h1>"
+#    elif sort_id == 4:
+#        html = "<h1>Sort id is Z - A</h1>"
+#    else:
+#        html = "<h1>Error</h1>"
+#    return html
+
+@app.route('/search_catalog', methods=['POST'])
+def search_catalog():
+    food_group = request.form.get('food_group_select')
+    if food_group == 'All':
+        foods = mongo.db.foods.find()
     else:
-        html = "<h1>Error</h1>"
-
-    return html
-
-@app.route('/apply_filters', methods=['POST'])
-def apply_filters():
-    category = request.form.get('category')
-    if category == 'food':
-        victuals = mongo.db.foods.find()
-    else:
-        victuals = mongo.db.drinks.find()
+        foods = mongo.db.foods.find({'group': food_group})
     
-    sugar_measure = request.form.get('sugar-measure')
-    sort_by = request.form.get('sort-by')
+    sugar_measure = request.form.get('sugar_measure_select')
+    sort_by = request.form.get('sort_by_select')
 
     if (sort_by == 'H-L') or (sort_by == 'L-H'):
         if sugar_measure == 'serving':
             if sort_by == 'H-L':
-                victuals_sorted = victuals.sort("sugar_g_per_serving", DESCENDING)
+                foods_sorted = foods.sort("sugar_g_per_serving", DESCENDING)
             else:
-                victuals_sorted = victuals.sort("sugar_g_per_serving")
+                foods_sorted = foods.sort("sugar_g_per_serving")
         elif sugar_measure == '100g':
             if sort_by == 'H-L':
-                victuals_sorted = victuals.sort("sugar_g_per_100g", DESCENDING)
+                foods_sorted = foods.sort("sugar_g_per_100g", DESCENDING)
             else:
-                victuals_sorted = victuals.sort("sugar_g_per_100g")
-        elif sugar_measure == '100ml':
-            if sort_by == 'H-L':
-                victuals_sorted = victuals.sort("sugar_g_per_100ml", DESCENDING)
-            else:
-                victuals_sorted = victuals.sort("sugar_g_per_100ml")
+                foods_sorted = foods.sort("sugar_g_per_100g")
     elif sort_by == 'A-Z':
-        victuals_sorted = victuals.sort("name")
+        foods_sorted = foods.sort("name")
     elif sort_by == 'Z-A':
-        victuals_sorted = victuals.sort("name", DESCENDING)
+        foods_sorted = foods.sort("name", DESCENDING)
     else:
-        victuals_sorted = victuals.sort("name")
+        foods_sorted = foods.sort("name")
 
     # return the html get_foods ?
     # send in victuals_sorted as foods, category, sort_by and sugar_measure (so as to set defaults fo filters)

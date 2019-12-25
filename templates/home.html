@@ -12,7 +12,7 @@
                         <strong>The Sugar Catalog</strong> is your reference to identify high sugar foods and their low sugar alternatives.
                     </p>
                     <p>
-                        If your favourite food or drink is missing from the catalog, please consider adding it.
+                        If your favourite food is missing from the catalog, please consider adding it.
                     </p>
                     <p>
                         Want to test your knowledge of added sugar? Then take our survey!
@@ -40,27 +40,26 @@
             <h5>Search Catalog</h5>
         </div>
         <div class="row">
-            <form action="{{ url_for('apply_filters') }}" method="POST" class="col s12">
+            <form action="{{ url_for('search_catalog') }}" method="POST" class="col s12">
                 <div class="row">
                     <!-- Food, Drink -->
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
-                        <select id="category" name="category">
-                            <option value="food" selected>Food</option>
-                            <!-- must have g for Foods and ml for Drinks -->
-                            <option value="drink">Drink</option>
+                        <select id="food_group_select" name="food_group_select">
+                            <option value="All" selected>All</option>
+                            {% for food_group in food_groups %}
+                            <option value="{{ food_group.group }}">{{ food_group.group }}</option>
+                            {% endfor %}
                         </select>
-                        <label>Category</label>
+                        <label>Food Group</label>
                     </div>
         
                     <!-- Sugar Measure -->
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
-                        <select id="sugar-measure" name="sugar-measure">
+                        <select id="sugar_measure_select" name="sugar_measure_select">
                             <option value="serving" selected>Sugar per Serving</option>
                             <option value="100g">Sugar per 100g</option>
-                            <!-- must have g for Foods and ml for Drinks -->
-                            <option value="100ml">Sugar per 100ml</option>
                         </select>
                         <label>Sugar Measure</label>
                     </div>
@@ -68,7 +67,7 @@
                     <!-- Sort -->
                     <div class="input-field col s12 l4">
                         <i class="material-icons prefix">poll</i>
-                        <select id="sort-by" name="sort-by">
+                        <select id="sort_by_select" name="sort_by_select">
                             <option value="H-L" selected>Sugar: High to Low</option>
                             <option value="L-H">Sugar: Low to High</option>
                             <option value="A-Z">A - Z</option>
