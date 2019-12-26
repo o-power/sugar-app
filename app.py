@@ -85,17 +85,25 @@ def update_food(food_id):
 #        html = "<h1>Error</h1>"
 #    return html
 
-@app.route('/search_catalog', methods=['POST'])
+@app.route('/search_catalog', methods=['POST', 'GET'])
 def search_catalog():
-    food_group = request.form.get('food_group_select')
+    if request.method == "POST":
+        food_group = request.form.get('food_group_select')
+    else:
+        food_group = 'All'
+    
     if food_group == 'All':
         foods = mongo.db.foods.find()
     else:
         foods = mongo.db.foods.find({'group': food_group})
-    
-    sugar_measure = request.form.get('sugar_measure_select')
-    sort_by = request.form.get('sort_by_select')
 
+    if request.method == "POST":
+        sugar_measure = request.form.get('sugar_measure_select')
+        sort_by = request.form.get('sort_by_select')
+    else:
+        sugar_measure = 'serving'
+        sort_by = 'H-L'
+    
     if (sort_by == 'H-L') or (sort_by == 'L-H'):
         if sugar_measure == 'serving':
             if sort_by == 'H-L':
@@ -113,10 +121,15 @@ def search_catalog():
         foods_sorted = foods.sort("name", DESCENDING)
     else:
         foods_sorted = foods.sort("name")
+    
+    food_groups = mongo.db.food_groups.find()
 
-    # return the html get_foods ?
-    # send in victuals_sorted as foods, category, sort_by and sugar_measure (so as to set defaults fo filters)
-    return "<h1>Category {0}, Sugar Per {1}, Sort by {2}</h1>".format(html0,html1, html2)
+    #return "<h1>Category {0}, Sugar Per {1}, Sort by {2}</h1>".format(food_group,sugar_measure,sort_by)
+    return render_template('searchcatalog.html', food_group_select=food_group
+                                                , sugar_measure_select=sugar_measure
+                                                , sort_by_select=sort_by
+                                                , food_groups=food_groups
+                                                , foods=foods_sorted)
 
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
