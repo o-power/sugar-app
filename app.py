@@ -131,6 +131,11 @@ def search_catalog():
                                                 , food_groups=food_groups
                                                 , foods=foods_sorted)
 
+@app.route('/add_to_catalog')
+def add_to_catalog():
+    food_groups = mongo.db.food_groups.find()
+    return render_template('addtocatalog.html', food_groups=food_groups)
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),

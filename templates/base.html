@@ -27,8 +27,8 @@
                         </a>
                         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                         <ul class="right hide-on-med-and-down">
-                            <li><a href="sass.html">Search Catalog</a></li>
-                            <li><a href="sass2.html">Add to Catalog</a></li>
+                            <li><a href="{{ url_for('search_catalog') }}">Search Catalog</a></li>
+                            <li><a href="{{ url_for('add_to_catalog') }}">Add to Catalog</a></li>
                             <li><a href="sass3.html">Edit Catalog</a></li>
                         </ul>
                     </div>
@@ -37,8 +37,8 @@
         
             <ul class="sidenav" id="mobile-demo">
                 <li><a class="sidenav-close" href="#!"><i class="material-icons" id="sidenav-close-icon">close</i></a></li>
-                <li><a href="sass.html">Search Catalog</a></li>
-                <li><a href="sass2.html">Add to Catalog</a></li>
+                <li><a href="{{ url_for('search_catalog') }}">Search Catalog</a></li>
+                <li><a href="{{ url_for('add_to_catalog') }}">Add to Catalog</a></li>
                 <li><a href="sass3.html">Edit Catalog</a></li>
             </ul>
         </header>
