@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div class="row center">
+            <h5>Add Food Group</h5>
+            <p>Add a new food group to the catalog using the form below.</p>
+        </div>
+        <div class="row">
+            <form action="{{ url_for('insert_group') }}" method="POST" class="col s12">
+                <div class="row">
+                    <!-- Food Name -->
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">assignment</i>
+                        <input id="food_group" name="group" type="text" class="validate">
+                        <label for="food_group">Food Group</label>
+                    </div>
+                </div> <!-- row -->
+
+                <!-- Submit Button -->
+                <div class="row center">
+                    <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">ADD FOOD GROUP
+                        <i class="material-icons right">fastfood</i>
+                    </button>
+                </div>
+            </form>
+        </div> <!-- row -->
+    </div> <!-- container -->
+</div> <!-- section -->
+{% endblock %}

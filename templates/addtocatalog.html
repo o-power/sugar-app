@@ -2,6 +2,12 @@
 {% block content %}
 <div class="section">
     <div class="container">
+        <div class="row center">
+            <h5>Add to Catalog</h5>
+            <p>Add a new food to the catalog using the form below.<br>
+                If the food group is missing, please add it first.</p>
+            <a class="btn waves-effect waves-light apply-btn" href="{{ url_for('add_group') }}">ADD FOOD GROUP</a>
+        </div>
         <div class="row">
             <form action="{{ url_for('insert_food') }}" method="POST" class="col s12">
                 <div class="row">
@@ -50,7 +56,7 @@
 
                 <!-- Submit Button -->
                 <div class="row center">
-                    <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">Add Food
+                    <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">ADD FOOD
                         <i class="material-icons right">fastfood</i>
                     </button>
                 </div>

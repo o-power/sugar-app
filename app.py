@@ -148,6 +148,18 @@ def update_food(food_id):
                       })
     return redirect(url_for('search_catalog'))
 
+@app.route('/add_group')
+def add_group():
+    return render_template('addgroup.html')
+
+@app.route('/insert_group', methods=['POST'])
+def insert_group():
+    food_groups_collection = mongo.db.food_groups
+    food_group = request.form.to_dict()
+    food_group.pop('action')
+    food_groups_collection.insert_one(food_group)
+    return redirect(url_for('add_to_catalog'))
+
 if __name__ == '__main__':
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),
