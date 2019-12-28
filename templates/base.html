@@ -29,7 +29,7 @@
                         <ul class="right hide-on-med-and-down">
                             <li><a href="{{ url_for('search_catalog') }}">Search Catalog</a></li>
                             <li><a href="{{ url_for('add_to_catalog') }}">Add to Catalog</a></li>
-                            <li><a href="sass3.html">Edit Catalog</a></li>
+                            <li><a href="{{ url_for('edit_catalog') }}">Edit Catalog</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,10 +64,9 @@
                     <div class="col l4 offset-l2 s12">
                         <h5 class="white-text">Quick Links</h5>
                         <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('search_catalog') }}">Search Catalog</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('add_to_catalog') }}">Add to Catalog</a></li>
+                            <li><a class="grey-text text-lighten-3" href="{{ url_for('edit_catalog') }}">Edit Catalog</a></li>
                         </ul>
                     </div>
                 </div>

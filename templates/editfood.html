@@ -8,14 +8,14 @@
                     <!-- Food Name -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">assignment</i>
-                        <input id="food_name" name="food_name" type="text" class="validate" value="{{ food.name }}">
+                        <input id="food_name" name="name" type="text" class="validate" value="{{ food.name }}">
                         <label for="food_name">Food Name</label>
                     </div>                
                 
                     <!-- Food Group -->
                     <div class="input-field col s12">
                         <i class="material-icons prefix">poll</i>
-                        <select id="food_group" name="food_group">
+                        <select id="food_group" name="group">
                             <option value="" disabled selected>Choose Food Group</option>
                             {% for food_group in food_groups %}
                             {% if food_group.group == food.group %}

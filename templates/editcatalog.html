@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div class="row center">
+            <h5>Edit Catalog</h5>
+        </div>
+        <div class="row">
+            <form action="{{ url_for('search_edit_catalog') }}" method="POST" class="col s12">
+                <div class="row">
+                    <!-- Food, Drink -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="food_group_select" name="food_group_select">
+                            {% if food_group_select == 'All' %}
+                                <option value="All" selected>All</option>
+                                {% for food_group in food_groups %}
+                                <option value="{{ food_group.group }}">{{ food_group.group }}</option>
+                                {% endfor %}
+                            {% else %}
+                                <option value="All">All</option>
+                                {% for food_group in food_groups %}
+                                {% if food_group_select == food_group.group %}
+                                <option value="{{ food_group.group }}" selected>{{ food_group.group }}</option>
+                                {% else %}
+                                <option value="{{ food_group.group }}">{{ food_group.group }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                        <label>Food Group</label>
+                    </div>
+
+                    <!-- Sugar Measure -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="sugar_measure_select" name="sugar_measure_select">
+                            {% if sugar_measure_select == 'serving' %}
+                            <option value="serving" selected>Sugar per Serving</option>
+                            <option value="100g">Sugar per 100g</option>
+                            {% else %}
+                            <option value="serving">Sugar per Serving</option>
+                            <option value="100g" selected>Sugar per 100g</option>
+                            {% endif %}
+                        </select>
+                        <label>Sugar Measure</label>
+                    </div>
+
+                    <!-- Sort -->
+                    <div class="input-field col s12 l4">
+                        <i class="material-icons prefix">poll</i>
+                        <select id="sort_by_select" name="sort_by_select">
+                            {% if sort_by_select == 'H-L' %}
+                            <option value="H-L" selected>Sugar: High to Low</option>
+                            <option value="L-H">Sugar: Low to High</option>
+                            <option value="A-Z">A - Z</option>
+                            <option value="Z-A">Z - A</option>
+                            {% elif sort_by_select == 'L-H' %}
+                            <option value="H-L">Sugar: High to Low</option>
+                            <option value="L-H" selected>Sugar: Low to High</option>
+                            <option value="A-Z">A - Z</option>
+                            <option value="Z-A">Z - A</option>
+                            {% elif sort_by_select == 'A-Z' %}
+                            <option value="H-L">Sugar: High to Low</option>
+                            <option value="L-H">Sugar: Low to High</option>
+                            <option value="A-Z" selected>A - Z</option>
+                            <option value="Z-A">Z - A</option>
+                            {% else %}
+                            <option value="H-L">Sugar: High to Low</option>
+                            <option value="L-H">Sugar: Low to High</option>
+                            <option value="A-Z">A - Z</option>
+                            <option value="Z-A" selected>Z - A</option>
+                            {% endif %}
+                        </select>
+                        <label>Sort By</label>
+                    </div>
+                </div> <!-- row -->
+
+                <!-- Apply Button -->
+                <div class="row center">
+                    <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">Apply
+                        <i class="material-icons right">fastfood</i>
+                    </button>
+                </div>
+            </form>
+        </div> <!-- row -->
+
+        <div class="divider"></div>
+        {% for food in foods %}
+        <div class="row">
+            <h5>
+                <div class="traffic-light-label">Medium</div> <!-- colour needs to be made dynamic -->
+                {{ food.name }}
+            </h5>
+            <p>{{ food.sugar_g_per_100g }}g sugar per 100g</p> <!-- has to be made dynamic -->
+            <a href="{{ url_for('edit_food', food_id = food._id) }}" class="waves-effect waves-light btn btn_small">Edit</a>
+            <div class="outer-div">
+                <div class="inner-div" style="width:90%;">
+                    <!-- % has to made dynamic -->
+                    {{ food.sugar_g_per_100g }}g
+                    <!-- has to be made dependent on sugar measure -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> <!-- container -->
+</div> <!-- section -->
+{% endblock %}
