@@ -93,10 +93,10 @@
                 <div class="traffic-light-label">Medium</div> <!-- colour needs to be made dynamic -->
                 {{ food.name }}
             </h5>
-            <p>{{ food.sugar_g_per_100g }}g sugar per 100g</p> <!-- has to be made dynamic -->
+            <p>{{ food.sugar_g_per_serving }}g sugar per serving ({{ food.serving_description }})</p>
             <div class="outer-div">
-                <div class="inner-div" style="width:90%;"> <!-- % has to made dynamic -->
-                    {{ food.sugar_g_per_100g }}g <!-- has to be made dependent on sugar measure -->
+                <div class="inner-div" style="width:{{ food.sugar_g_per_serving*100/max_sugar_content }}%;">
+                    {{ food.sugar_g_per_serving }}g  
                 </div>
             </div>
         </div>

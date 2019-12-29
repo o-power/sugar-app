@@ -14,7 +14,12 @@ mongo = PyMongo(app)
 def home():
     food_groups = mongo.db.food_groups.find()
     foods = mongo.db.foods.find()
-    return render_template('home.html', food_groups=food_groups, foods=foods)
+    foods_sorted = foods.sort("sugar_g_per_serving", DESCENDING)
+    max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_serving'
+                    , DESCENDING)])['sugar_g_per_serving']
+    return render_template('home.html', food_groups=food_groups
+                                        , foods=foods_sorted
+                                        , max_sugar_content=max_sugar)
 
 @app.route('/search_catalog', methods=['POST', 'GET'])
 def search_catalog():
@@ -45,7 +50,7 @@ def search_catalog():
             if sort_by == 'H-L':
                 foods_sorted = foods.sort("sugar_g_per_100g", DESCENDING)
             else:
-                foods_sorted = foods.sort("sugar_g_per_100g")
+                foods_sorted = foods.sort("sugar_g_per_100g")      
     elif sort_by == 'A-Z':
         foods_sorted = foods.sort("name")
     elif sort_by == 'Z-A':
@@ -55,11 +60,33 @@ def search_catalog():
     
     food_groups = mongo.db.food_groups.find()
 
+    if sugar_measure == 'serving':
+        if food_group == 'All':
+            max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_serving'
+                , DESCENDING)])['sugar_g_per_serving']
+        else:
+            max_sugar = mongo.db.foods.find_one({'group': food_group}, sort=[(
+                'sugar_g_per_serving', DESCENDING)])['sugar_g_per_serving']
+    else:
+        if food_group == 'All':
+            max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_100g'
+                , DESCENDING)])['sugar_g_per_100g']
+        else:
+            max_sugar = mongo.db.foods.find_one({'group': food_group}, sort=[(
+                'sugar_g_per_100g', DESCENDING)])['sugar_g_per_100g']
+
+    #for food in foods_sorted:
+    #    if sugar_measure == 'serving':
+    #        food['sugar_percent_of_max'] = food['sugar_g_per_serving']/max_sugar
+    #    else:
+    #        food['sugar_percent_of_max'] = food['sugar_g_per_100g']/max_sugar
+
     return render_template('searchcatalog.html', food_group_select=food_group
                                                 , sugar_measure_select=sugar_measure
                                                 , sort_by_select=sort_by
                                                 , food_groups=food_groups
-                                                , foods=foods_sorted)
+                                                , foods=foods_sorted
+                                                , max_sugar_content=max_sugar)
 
 @app.route('/add_to_catalog')
 def add_to_catalog():
@@ -79,14 +106,17 @@ def insert_food():
 
 @app.route('/edit_catalog')
 def edit_catalog():
-    foods = mongo.db.foods.find()
-    foods_sorted = foods.sort("sugar_g_per_serving")
     food_groups = mongo.db.food_groups.find()
+    foods = mongo.db.foods.find()
+    foods_sorted = foods.sort("sugar_g_per_serving", DESCENDING)
+    max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_serving'
+                    , DESCENDING)])['sugar_g_per_serving']
     return render_template('editcatalog.html', food_group_select='All'
                                               , sugar_measure_select='serving'
                                               , sort_by_select='H-L'
                                               , food_groups=food_groups
-                                              , foods=foods_sorted)
+                                              , foods=foods_sorted
+                                              , max_sugar_content=max_sugar)
 
 @app.route('/search_edit_catalog', methods=['POST'])
 def search_edit_catalog():
@@ -120,11 +150,27 @@ def search_edit_catalog():
     
     food_groups = mongo.db.food_groups.find()
 
+    if sugar_measure == 'serving':
+        if food_group == 'All':
+            max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_serving'
+                , DESCENDING)])['sugar_g_per_serving']
+        else:
+            max_sugar = mongo.db.foods.find_one({'group': food_group}, sort=[(
+                'sugar_g_per_serving', DESCENDING)])['sugar_g_per_serving']
+    else:
+        if food_group == 'All':
+            max_sugar = mongo.db.foods.find_one(sort=[('sugar_g_per_100g'
+                , DESCENDING)])['sugar_g_per_100g']
+        else:
+            max_sugar = mongo.db.foods.find_one({'group': food_group}, sort=[(
+                'sugar_g_per_100g', DESCENDING)])['sugar_g_per_100g']
+                
     return render_template('editcatalog.html', food_group_select=food_group
                                                 , sugar_measure_select=sugar_measure
                                                 , sort_by_select=sort_by
                                                 , food_groups=food_groups
-                                                , foods=foods_sorted)
+                                                , foods=foods_sorted
+                                                , max_sugar_content=max_sugar)
 
 @app.route('/edit_food/<food_id>')
 def edit_food(food_id):
