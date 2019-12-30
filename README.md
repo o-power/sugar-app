@@ -23,7 +23,7 @@ A live demo of The Sugar Catalog app can be found [here]() on Heroku.
 
 ### Wireframes
 
-<img src="static/img/navigation_flow.jpg" alt="Image of app">
+<img src="static/img/navigation_flow.jpg" alt="Image of app" width="500px">
 foods
 name
 group
