@@ -1,4 +1,4 @@
-<h1 id="title">Sugar App</h1>
+<h1 id="title">The Sugar Catalog</h1>
 
 1. [Introduction](#introduction)
 2. [Demo](#demo)
@@ -15,7 +15,7 @@ This project is a MongoDB-backed Flask app for sharing the sugar content of food
 
 <h2 id="demo">Demo</h2>
 
-A live demo can be found [here]() on Heroku.
+A live demo of The Sugar Catalog app can be found [here]() on Heroku.
 
 <img src="images/website_deviceframes.jpg" alt="Image of app">
 
@@ -84,6 +84,8 @@ Filtering
 
 ### Existing
 ### Future
+- Add the ability to add drinks to the sugar catalog. This will involve adding a g per 100ml measure.
+- Add error messages if the user fails to enter data correctly in the forms.
 
 <h2 id="testing">Testing</h2>
 
@@ -117,6 +119,11 @@ git push -u heroku master
 <h2 id="credits">Credits</h2>
 
 ### Content
+- The survey questions were adapted from []().
+
 ### Media
+- The background image was taken by myself and edited using Gimp.
+- The site logo was created using Microsoft PowerPoint.
+
 ### Acknowledgements
 * Shortcut icon generated using [Favicon Generator](https://realfavicongenerator.net/) [accessed 12th December 2019].
