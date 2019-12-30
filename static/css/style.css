@@ -220,6 +220,11 @@ nav {
     color: #db7b2b;
 }
 
+/* Traffic Light Legend */
+.traffic-light-legend {
+    margin: 10px 0;
+}
+
 /* Footer */
 .page-footer {
     background-color: /*#03B1CC*/#037eae;
@@ -238,6 +243,7 @@ nav {
         height: 64px;
     }
     .home-btn {
+        width: 80%;
         margin-top: 1rem;
         margin-bottom: 0.5rem;
     }

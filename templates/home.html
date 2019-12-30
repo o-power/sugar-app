@@ -6,7 +6,10 @@
             <div class="col s12">
                 <div class="card-panel">
                     <p>
-                        A healthy diet means limiting our intake of added sugar.
+                        A healthy diet means limiting your intake of added sugar.
+                    </p>
+                    <p>
+                        Guidelines recommend no more than 6 teaspoons (24g) of added sugar per day for women and 9 teaspoons (36g) for men. 
                     </p>
                     <p>
                         <strong>The Sugar Catalog</strong> is your reference to identify high sugar foods and their low sugar alternatives.
@@ -14,18 +17,12 @@
                     <p>
                         If your favourite food is missing from the catalog, please consider adding it.
                     </p>
-                    <p>
-                        Want to test your knowledge of added sugar? Then take our survey!
-                    </p>
                     <div class="row">
-                        <div class="col s12 m4 btn-container">
+                        <div class="col s12 m6 btn-container">
                             <a class="waves-effect waves-light btn home-btn" href="{{ url_for('search_catalog') }}">SEARCH CATALOG</a>
                         </div>
-                        <div class="col s12 m4 btn-container">
+                        <div class="col s12 m6 btn-container">
                             <a class="waves-effect waves-light btn home-btn" href="{{ url_for('add_to_catalog') }}">ADD TO CATALOG</a>
-                        </div>
-                        <div class="col s12 m4 btn-container">
-                            <a class="waves-effect waves-light btn home-btn">TAKE SURVEY</a>
                         </div>
                     </div>
                 </div> <!-- card -->
@@ -118,7 +115,43 @@
             </div>
         </div>
         {% endfor %}
-
+        <div class="divider"></div>
+        <div class="row traffic-light-legend">
+            <strong>Traffic Light Labelling</strong>
+        </div>
+        <div class="row traffic-light-legend">
+            <div class="col s12 l4 traffic-light-legend">
+                <div class="traffic-light-label traffic-light-red">
+                    High
+                </div>
+                Over 15g of sugar per 100g
+            </div>
+            <div class="col s12 l4 traffic-light-legend">
+                <div class="traffic-light-label traffic-light-amber">
+                    Medium
+                </div>
+                Between 5g and 15g of sugar per 100g
+            </div>
+            <div class="col s12 l4 traffic-light-legend">
+                <div class="traffic-light-label traffic-light-green">
+                    Low
+                </div>
+                5g or less of sugar per 100g
+            </div>
+        </div>
+        <div class="row traffic-light-legend">
+            <strong>Reviewed Indicator</strong>
+        </div>
+        <div class="row traffic-light-legend">
+            <div class="col s12 l4 traffic-light-legend">
+                <i class="material-icons heading-icon reviewed-icon">star_border</i>
+                Not reviewed
+            </div>
+            <div class="col s12 l4 traffic-light-legend">
+                <i class="material-icons heading-icon reviewed-icon">star</i>
+                Reviewed
+            </div>
+        </div>
     </div> <!-- container -->
 </div> <!-- section -->
 {% endblock %}
