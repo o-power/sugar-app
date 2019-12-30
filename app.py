@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 app = Flask(__name__,
             template_folder='templates')
 app.config['MONGO_DBNAME'] = 'sugar_app'
-app.config['MONGO_URI'] = os.getenv('MONGO_URI')
+app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
@@ -220,9 +220,9 @@ def insert_group():
 
 if __name__ == '__main__':
     # If deploying to Heroku
-    #app.run(host=os.environ.get('IP'),
-    #        port=int(os.environ.get('PORT')),
-    #        debug=False)
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=False)
     
     # If running locally with command python app.py
-    app.run(debug=True)
+    #app.run(debug=True)
