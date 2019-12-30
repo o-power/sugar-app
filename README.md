@@ -11,13 +11,28 @@
 
 <h2 id="introduction">Introduction</h2>
 
-This project is a MongoDB-backed Flask app for sharing the sugar content of foods and drinks. In addition, users can complete a survey and the results of this survey advance the site owner's goal of gathering information on people's understanding of matters relating to sugar content.
+This project is a MongoDB-backed Flask app for sharing the sugar content of foods. The motivation for users is that they can compare their favourite foods to other foods in terms of sugar content. The motivation for the site owner is building up a useful database that can be used for educating the community. In addition, users can complete a survey and test their knowledge of added sugar.
 
 <h2 id="demo">Demo</h2>
+
+A live demo can be found [here]() on Heroku.
+
+<img src="images/website_deviceframes.jpg" alt="Image of app">
 
 <h2 id="ux">UX</h2>
 
 ### Wireframes
+
+foods
+name
+group
+sugar_g_per_100g
+sugar_g_per_serving
+serving_description
+reviewed
+
+food_groups
+group
 
 Conceptual Design - Entity-Relationship Data Model
 A food category has many foods.
@@ -48,14 +63,13 @@ Sugar in drinks (g/100ml or g per serving/portion, % sugar based on density of w
 
 <h2 id="technologies">Technologies/Libraries</h2>
 
-1. [MongoDB](https://www.mongodb.com/)
-2. [Heroku](https://www.heroku.com/)
-3. Microsoft PowerPoint was used to create the logo.
-4. [Gimp](https://www.gimp.org/) was used to reduce the file size of the background photo and thereby speed up how fast it loads.
-
-[Materialize]() or [Bootstrap]()
-[Python]()
-[Heroku](https://www.heroku.com)
+1. [MongoDB](https://www.mongodb.com/) was used as the NoSQL database for the app.
+2. [Python](https://www.python.org/), and specifically [Flask](https://flask.palletsprojects.com/en/1.1.x/), was used as the back-end language.
+3. [Jinja](https://jinja.palletsprojects.com/en/2.10.x/) was used as the templating language for rendering the pages.
+4. [Materialize](https://materializecss.com/) was used as the front-end framework.
+5. Microsoft PowerPoint was used to create the logo.
+6. [Gimp](https://www.gimp.org/) was used to reduce the file size of the background photo and thereby speed up how fast it loads.
+7. [Heroku](https://www.heroku.com/) was used to deploy the app.
 
 <h2 id="features">Features</h2>
 
