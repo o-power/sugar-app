@@ -1,5 +1,5 @@
 body {
-    background-color: /*#FFD540*/#fffc68;
+    background-color: #fffc68;
     color: #000;
 }
 
@@ -54,11 +54,11 @@ nav {
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 0.25rem;
-    background-color: /*#03B1CC*//*#E93996*/#d52583;
+    background-color: #d52583;
 }
 
 .home-btn:hover {
-    background-color: /*#17c5e0*//*#fd4dab*/#e93997;
+    background-color: #e93997;
 }
 
 .card-panel .row {
@@ -150,6 +150,7 @@ nav {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* Bar representing sugar content */
 .outer-div {
     width: 100%;
     background-color: #c9c9c9;
@@ -162,15 +163,15 @@ nav {
     padding-bottom: 6px;
     padding-right: 10px;
     color: white;
-    background-color: /*#E93996*/#d52583;
+    background-color: #d52583;
     transition: background-color .3s;
     font-size: 16px;
 }
 
+/* Traffic light food label */
 .traffic-light-label {
     display: inline-block;
     font-size: 1rem;
-    background-color: #cc3232;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding-left: 6px;
@@ -181,7 +182,26 @@ nav {
     text-align: center;
 }
 
-/* amber #db7b2b, green #2dc937 */
+.traffic-light-red {
+    background-color: #cc3232;
+}
+
+.traffic-light-amber {
+    background-color: #db7b2b;
+}
+
+.traffic-light-green {
+    background-color: #2dc937;
+}
+
+/* Icons before headings */
+.heading-icon {
+    padding-right: 5px;
+}
+
+.reviewed-icon {
+    color: #db7b2b;
+}
 
 /* Footer */
 .page-footer {

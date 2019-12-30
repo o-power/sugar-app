@@ -37,7 +37,7 @@
 <div class="section">
     <div class="container">
         <div class="row center">
-            <h5>Search Catalog</h5>
+            <h5><i class="material-icons heading-icon">search</i>Search Catalog</h5>
         </div>
         <div class="row">
             <form action="{{ url_for('search_catalog') }}" method="POST" class="col s12">
@@ -66,7 +66,7 @@
         
                     <!-- Sort -->
                     <div class="input-field col s12 l4">
-                        <i class="material-icons prefix">poll</i>
+                        <i class="material-icons prefix">sort</i>
                         <select id="sort_by_select" name="sort_by_select">
                             <option value="H-L" selected>Sugar: High to Low</option>
                             <option value="L-H">Sugar: Low to High</option>
@@ -80,7 +80,7 @@
                 <!-- Apply Button -->
                 <div class="row center">
                     <button class="btn waves-effect waves-light apply-btn" type="submit" name="action">APPLY FILTERS
-                        <i class="material-icons right">fastfood</i>
+                        <i class="material-icons right">filter_list</i>
                     </button>
                 </div>
             </form>
@@ -90,13 +90,30 @@
         {% for food in foods %}
         <div class="row">
             <h5>
-                <div class="traffic-light-label">Medium</div> <!-- colour needs to be made dynamic -->
+                {% if food.sugar_g_per_100g <= 5.0 %}
+                <div class="traffic-light-label traffic-light-green">
+                    Low
+                </div>
+                {% elif food.sugar_g_per_100g > 15.0 %}
+                <div class="traffic-light-label traffic-light-red">
+                    High
+                </div>
+                {% else %}
+                <div class="traffic-light-label traffic-light-amber">
+                    Medium
+                </div>
+                {% endif %}
                 {{ food.name }}
+                {% if food.reviewed %}
+                <i class="material-icons heading-icon reviewed-icon">star</i>
+                {% else %}
+                <i class="material-icons heading-icon reviewed-icon">star_border</i>
+                {% endif %}
             </h5>
             <p>{{ food.sugar_g_per_serving }}g sugar per serving ({{ food.serving_description }})</p>
             <div class="outer-div">
                 <div class="inner-div" style="width:{{ food.sugar_g_per_serving*100/max_sugar_content }}%;">
-                    {{ food.sugar_g_per_serving }}g  
+                    {{ food.sugar_g_per_serving|round(1) }}g  
                 </div>
             </div>
         </div>
