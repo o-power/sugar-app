@@ -21,46 +21,47 @@ A live demo of The Sugar Catalog app can be found [here]() on Heroku.
 
 <h2 id="ux">UX</h2>
 
-### Wireframes
+### User Stories
 
-<img src="static/img/navigation_flow.jpg" alt="Image of app" width="500px">
+1. As a user, I want to be able to compare a list of foods based on grams of sugar per 100 grams so that I can identify high, medium and low sugar foods.
+2. As a user, I want to be able to compare a list of foods based on grams of sugar per serving so that I can understand how much sugar is in a serving of my favourite foods.
+3. As a user, I want to be able to add new foods to the catalog so that I can compare them to other foods and also share them with the community.
+4. As a user, I want to be able to add new food groups to the catalog so that I can then add new foods which fall into those groups.
+5. As a user, I want to be able to edit foods in the catalog so that I can make corrections and also mark entries as reviewed.
+6. As a user, I want to be able to search the catalog based on food group so that I can quickly find foods in a particular group.
+7. As a user, I want to be able to sort the catalog by sugar content (high to low or low to high) so that I can quickly find either high or low sugar foods.
+8. As a user, I want to be able to sort the catalog alphabetically (A to Z or Z to A) so that I can quickly find particular foods.
+
+### Database
+
+Behind the app there is a single MongoDB database called sugar_app which contains 2 collections: foods and food_groups. A food belongs to one food group, although a food group can have many foods.
+
 foods
-name
-group
-sugar_g_per_100g
-sugar_g_per_serving
-serving_description
-reviewed
+- name (string)
+- group (string)
+- sugar_g_per_100g (double)
+- sugar_g_per_serving (double)
+- serving_description (string)
+- reviewed (Boolean)
 
 food_groups
-group
+- group (string)
 
-Conceptual Design - Entity-Relationship Data Model
-A food category has many foods.
-A drink category has many drinks.
-A survey has many questions.
-A question has multiple options. One option is correct. The rest are incorrect.
-A survey has many responses.
-A response has a score (number of correct responses).
+### Navigation
 
-Database statistics
-Number of Food categories
-Number of Drink categories
-Number of Foods (by category)
-Number of Drinks (by category)
-Survey responses.
+The app consists of 6 views. There are 10 functions which handle the rendering of these views:
+1. home
+2. search_catalog
+3. add_to_catalog
+4. insert_food
+5. add_group
+6. insert_group
+7. edit_catalog
+8. search_edit_catalog
+9. edit_food
+10. update_food
 
-Recommended daily intake
-40g = 4g by 10
-Sugar in foods (g/100g or g per serving/portion, % sugar)
-Sugar in drinks (g/100ml or g per serving/portion, % sugar based on density of water)
-
-### User Stories
-1. As a user, I want to be able to add the sugar content of foods and drinks so that I can share them with the community.
-2. As a user, I want to be able to compare the sugar content of foods and drinks so that I can choose options with a lower sugar content.
-3. As a user, I want to be able to complete a survey so that I can test my knowledge on the sugar content of foods and drinks.
-4. As a user, I want to be able to see the aggregated survey results of everyone who has taken the survey so that I can see how much the community knows about the sugar content of foods and drinks.
-5. As a user, I want to be able to see statistics on the database so that I can see how complete a resource the site is.
+<img src="static/img/navigation_flow.jpg" alt="Image of app" width="500px">
 
 <h2 id="technologies">Technologies/Libraries</h2>
 
@@ -74,16 +75,17 @@ Sugar in drinks (g/100ml or g per serving/portion, % sugar based on density of w
 
 <h2 id="features">Features</h2>
 
-Create: Add sugar content of a food or drink.
-Read: List sugar content of foods and drinks.
-Update: Edit sugar content of a food or drink.
-Delete: sugar content of a food or drink.
-Survey
-Display survey results
-Sorting
-Filtering
-
 ### Existing
+- User can filter catalog by food group.
+- User can choose the sugar measure to be either grams per 100g or grams per serving.
+- User can sort the catalog alphabetically (A to Z or Z to A).
+- User can sort the catalog by sugar content (high to low or low to high).
+- User can add a new food group to the catalog e.g. Confectionery, Cereal etc.
+- User can add a new food to the catalog.
+- User can edit the details of any food in the catalog.
+- User can mark a food as reviewed (by default, each food is not reviewed).
+- Site is responsive, i.e. the navigation bar and page contents resize based on screen size. This is achieved using the Materialize grid and media queries.
+
 ### Future
 - Add the ability to add drinks to the sugar catalog. This will involve adding a g per 100ml measure.
 - Add error messages if the user fails to enter data correctly in the forms.
