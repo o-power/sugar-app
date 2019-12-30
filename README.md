@@ -17,7 +17,7 @@ The Sugar Catalog is a MongoDB-backed Flask app for sharing the sugar content of
 
 A live demo of The Sugar Catalog app can be found [here]() on Heroku.
 
-<img src="images/website_deviceframes.jpg" alt="Image of app">
+<img src="static/img/siteoniphoneandipad.jpg" alt="Image of app" width="700px">
 
 <h2 id="ux">UX</h2>
 
