@@ -11,7 +11,7 @@
 
 <h2 id="introduction">Introduction</h2>
 
-This project is a MongoDB-backed Flask app for sharing the sugar content of foods. The motivation for users is that they can compare their favourite foods to other foods in terms of sugar content. The motivation for the site owner is building up a useful database that can be used for educating the community. In addition, users can complete a survey and test their knowledge of added sugar.
+The Sugar Catalog is a MongoDB-backed Flask app for sharing the sugar content of foods. The motivation for users is that they can compare their favourite foods to other foods in terms of sugar content. The motivation for the site owner is building up a useful database that can be used for educating the community and improving health.
 
 <h2 id="demo">Demo</h2>
 
@@ -23,6 +23,7 @@ A live demo of The Sugar Catalog app can be found [here]() on Heroku.
 
 ### Wireframes
 
+<img src="static/img/navigation_flow.jpg" alt="Image of app" width="500px">
 foods
 name
 group
