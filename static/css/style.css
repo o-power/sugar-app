@@ -96,6 +96,23 @@ nav {
     background-color: #03a3ae;
 }
 
+.edit-btn {
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 7px;
+    background-color: #037eae;
+}
+
+.edit-btn:hover {
+    background-color: #03a3ae;
+}
+
+.material-icons.edit-btn-icon {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
 .switch label {
     color: #000;
 }

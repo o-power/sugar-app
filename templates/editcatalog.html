@@ -111,11 +111,20 @@
                 {% endif %}
             </h5>
             {% if sugar_measure_select == 'serving' %}
-            <p>{{ food.sugar_g_per_serving }}g sugar per serving ({{ food.serving_description }})</p>
+            <p>{{ food.sugar_g_per_serving }}g sugar per serving ({{ food.serving_description }})
+                <a href="{{ url_for('edit_food', food_id = food._id) }}"
+                class="waves-effect waves-light btn btn_small edit-btn">
+                    EDIT<i class="material-icons edit-btn-icon right">create</i>
+                </a>
+            </p>
             {% else %}
-            <p>{{ food.sugar_g_per_100g }}g sugar per 100g</p>
+            <p>{{ food.sugar_g_per_100g }}g sugar per 100g
+                <a href="{{ url_for('edit_food', food_id = food._id) }}"
+                class="waves-effect waves-light btn btn_small edit-btn">
+                    EDIT<i class="material-icons edit-btn-icon right">create</i>
+                </a>
+            </p>
             {% endif %}
-            <a href="{{ url_for('edit_food', food_id = food._id) }}" class="waves-effect waves-light btn btn_small">EDIT</a>
             <div class="outer-div">
                 {% if sugar_measure_select == 'serving' %}
                 <div class="inner-div" style="width:{{ food.sugar_g_per_serving*100/max_sugar_content }}%;">
