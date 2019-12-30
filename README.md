@@ -89,44 +89,49 @@ The app consists of 6 views. There are 10 functions which handle the rendering o
 ### Future
 - Add the ability to add drinks to the sugar catalog. This will involve adding a g per 100ml measure.
 - Add error messages if the user fails to enter data correctly in the forms.
+- Add a survey to capture user knowledge of added sugar and to also educate users.
 
 <h2 id="testing">Testing</h2>
 
 ### General Testing
 
-During development, the Chrome DevTools console was used regularly to log the data to ensure that it was being correctly retrieved from MongoDB.
+During development, the Chrome DevTools console was used regularly to test the responsiveness of the site on different screen sizes. Overall, working with Materialize framework was found to be more difficult than working with the Bootstrap framework as the Materialize framework has less components and documentation.
 
-The HTML was checked using the [W3C Markup Validation Service](https://validator.w3.org/). This identified an incorrectly used paragraph element.
+During development, the app was ran locally in a virtual environment with debug mode on so that any changes could be tested immediately without restarting the app. Only once development was nearly complete was the app deployed to Heroku. 
 
-The CSS was checked using the [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/). This returned one error which said the property "r" does not exist. However, "r" is a property of the circle svg.
-
-### User Story Testing
+New foods and food groups were added and edited to ensure all functionality was working as expected. The site was given to an independent tester to test the functionality. Based on feedback, some legends were added to the bottom of the search to explain the traffic light food labelling and the reviewed/not reviewed indicator.
 
 <h2 id="deployment">Deployment</h2>
 
 The app is deployed on Heroku. Before deploying the app on Heroku, ensure that the project includes the files requirements.txt and Procfile. To create the requirements.txt file, run the following command in the terminal:
+```
 pip3 freeze --local > requirements.txt
+```
 To create the Procfile, run the following command in the terminal:
+```
 echo web: python app.py > Procfile
+```
 
 Next, create a new app within the Heroku web application. Under Settings add the environment variables:
-IP
-PORT
-MONGO_URI (connection string for the MongoDB)
+- IP
+- PORT
+- MONGO_URI (connection string for the MongoDB)
 
 To deploy the app from the local repository, run the following commands in the terminal:
+```
 heroku login
 git remote add heroku https://git.heroku.com/<insert app name>.git
 git push -u heroku master
+```
 
 <h2 id="credits">Credits</h2>
 
 ### Content
-- The survey questions were adapted from []().
+- The sugar consumption guidelines were taken from [heart.org](https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/sugar/added-sugars).
 
 ### Media
 - The background image was taken by myself and edited using Gimp.
 - The site logo was created using Microsoft PowerPoint.
 
 ### Acknowledgements
-* Shortcut icon generated using [Favicon Generator](https://realfavicongenerator.net/) [accessed 12th December 2019].
+- The shortcut icon was generated using [Favicon Generator](https://realfavicongenerator.net/) [accessed 12th December 2019].
