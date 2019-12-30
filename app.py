@@ -12,6 +12,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
+    """ Renders the home page. """
     food_groups = mongo.db.food_groups.find()
     foods = mongo.db.foods.find()
     foods_sorted = foods.sort("sugar_g_per_serving", DESCENDING)
@@ -23,6 +24,9 @@ def home():
 
 @app.route('/search_catalog', methods=['POST', 'GET'])
 def search_catalog():
+    """ If request method is POST, then renders the searchcatalog.html page
+    with the values submitted in the form. If the request method is GET, then
+    renders the searchcatalog.html page with the default values. """
     if request.method == "POST":
         food_group = request.form.get('food_group_select')
     else:
@@ -75,12 +79,6 @@ def search_catalog():
             max_sugar = mongo.db.foods.find_one({'group': food_group}, sort=[(
                 'sugar_g_per_100g', DESCENDING)])['sugar_g_per_100g']
 
-    #for food in foods_sorted:
-    #    if sugar_measure == 'serving':
-    #        food['sugar_percent_of_max'] = food['sugar_g_per_serving']/max_sugar
-    #    else:
-    #        food['sugar_percent_of_max'] = food['sugar_g_per_100g']/max_sugar
-
     return render_template('searchcatalog.html', food_group_select=food_group
                                                 , sugar_measure_select=sugar_measure
                                                 , sort_by_select=sort_by
@@ -90,11 +88,15 @@ def search_catalog():
 
 @app.route('/add_to_catalog')
 def add_to_catalog():
+    """ Renders the addtocatalog page. """
     food_groups = mongo.db.food_groups.find()
     return render_template('addtocatalog.html', food_groups=food_groups)
 
 @app.route('/insert_food', methods=['POST'])
 def insert_food():
+    """ Inserts the food as submitted through the form into the catalog
+    and renders the default searchcatalog.html page by calling the
+    search_catalog function. """
     foods_collection = mongo.db.foods
     food = request.form.to_dict()
     food.pop('action')
@@ -106,6 +108,7 @@ def insert_food():
 
 @app.route('/edit_catalog')
 def edit_catalog():
+    """ Renders the editcatalog.html page with the default values. """
     food_groups = mongo.db.food_groups.find()
     foods = mongo.db.foods.find()
     foods_sorted = foods.sort("sugar_g_per_serving", DESCENDING)
@@ -120,6 +123,7 @@ def edit_catalog():
 
 @app.route('/search_edit_catalog', methods=['POST'])
 def search_edit_catalog():
+    """ Renders the editcatalog.html page with the values submitted in the form. """
     food_group = request.form.get('food_group_select')
     
     if food_group == 'All':
@@ -174,12 +178,16 @@ def search_edit_catalog():
 
 @app.route('/edit_food/<food_id>')
 def edit_food(food_id):
+    """ Renders the editfood.html page with the details for the user-selected food. """
     food = mongo.db.foods.find_one({'_id': ObjectId(food_id)})
     food_groups = mongo.db.food_groups.find()
     return render_template('editfood.html', food=food, food_groups=food_groups)
 
 @app.route('/update_food/<food_id>', methods=['POST'])
 def update_food(food_id):
+    """ Updates the food in the catalog with the values submitted through the form
+    and renders the default searchcatalog.html page by calling the
+    search_catalog function. """ 
     foods_collection = mongo.db.foods
     foods_collection.update_one({'_id': ObjectId(food_id)},
                      {'$set':
@@ -196,10 +204,14 @@ def update_food(food_id):
 
 @app.route('/add_group')
 def add_group():
+    """ Renders the addgroup.html page. """
     return render_template('addgroup.html')
 
 @app.route('/insert_group', methods=['POST'])
 def insert_group():
+    """ Inserts the food group as submitted through the form into the catalog
+    and renders the addtocatalog.html page by calling the
+    add_to_catalog function. """
     food_groups_collection = mongo.db.food_groups
     food_group = request.form.to_dict()
     food_group.pop('action')
@@ -207,7 +219,10 @@ def insert_group():
     return redirect(url_for('add_to_catalog'))
 
 if __name__ == '__main__':
+    # If deploying to Heroku
     #app.run(host=os.environ.get('IP'),
     #        port=int(os.environ.get('PORT')),
     #        debug=False)
+    
+    # If running locally with command python app.py
     app.run(debug=True)
