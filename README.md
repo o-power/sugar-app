@@ -50,18 +50,18 @@ food_groups
 ### Navigation
 
 The app consists of 6 views. There are 10 functions which handle the rendering of these views:
-1. home
-2. search_catalog
-3. add_to_catalog
-4. insert_food
-5. add_group
-6. insert_group
-7. edit_catalog
-8. search_edit_catalog
-9. edit_food
-10. update_food
+1. home(): renders the home page.
+2. search_catalog(): if request method is POST, then renders the searchcatalog.html page with the values submitted in the form. If the request method is GET, then renders the searchcatalog.html page with the default values.
+3. add_to_catalog(): renders the addtocatalog page.
+4. insert_food(): Inserts the food as submitted through the form into the catalog and renders the default searchcatalog.html page by calling the search_catalog function.
+5. add_group(): renders the addgroup.html page. 
+6. insert_group(): inserts the food group as submitted through the form into the catalog and renders the addtocatalog.html page by calling the add_to_catalog function.
+7. edit_catalog(): renders the editcatalog.html page with the default values. 
+8. search_edit_catalog(): renders the editcatalog.html page with the values submitted in the form. 
+9. edit_food(food_id): renders the editfood.html page with the details for the user-selected food.
+10. update_food(food_id): Updates the food in the catalog with the values submitted through the form and renders the default searchcatalog.html page by calling the search_catalog function.
 
-<img src="static/img/navigation_flow.jpg" alt="Image of app" width="500px">
+<img src="static/img/navigation_flow.jpg" alt="Image of app" width="700px">
 
 <h2 id="technologies">Technologies/Libraries</h2>
 
